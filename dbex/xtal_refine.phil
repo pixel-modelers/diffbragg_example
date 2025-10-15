@@ -1,0 +1,46 @@
+
+filter_during_refinement {
+  enable = True
+}
+no_Nabc_scale=True
+roi {
+  hotpixel_mask = 747_mask.pkl
+  trusted_range = [0,1e5]
+}
+method = "L-BFGS-B"
+init {
+  G = 1e17
+  Nabc=[20,20,20]
+}
+mins {
+  G = 1e16
+}
+maxs {
+  G = 1e18
+}
+logging {
+  parameters = True
+}
+simulator {
+  gonio {
+    axis = -1 0 0
+    delta_phi = 0.1
+    phi_steps = 10
+  }
+  detector {
+    force_zero_thickness = True
+  }
+  structure_factors {
+    mtz_name="proc/scaled.mtz"
+    mtz_column="F,SIGF"
+  }
+}
+refiner {
+  num_devices = 1
+}
+
+
+
+
+
+
