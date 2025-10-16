@@ -67,6 +67,7 @@ def run_diffbragg(data_load, devId=0, num_macro=5):
     params_fhkl = phil_scope.fetch(sources=[parse(config2)]).extract()
     for prm in (params, params_fhkl):
         prm.simulator.structure_factors.mtz_name = data_load.args.mtzFile
+        prm.simulator.structure_factors.mtz_column = data_load.args.mtzCol
         prm.roi.hotpixel_mask = data_load.args.maskFile
 
     Expt = deepcopy(data_load.Expt)
